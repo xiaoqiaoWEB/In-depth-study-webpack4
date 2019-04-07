@@ -5,10 +5,12 @@ const path = require('path')
 module.exports = {
   mode: 'development',
   entry: {
-    main: './src/index.js'
+    main: './src/index.js',
+    //sub: './src/index.js'
   },
   output: {
-    filename: 'bundle.js',
+    //publicPath: 'http//:www.cdn.cn',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
