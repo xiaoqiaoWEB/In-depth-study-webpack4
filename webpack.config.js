@@ -23,6 +23,10 @@ module.exports = {
         }
       },
       {
+        test: /\.(eot|ttf|svg)$/,
+        loader: 'file-loader'
+      },
+      {
         test: /\.(scss)$/,
         use: ['style-loader', {
           loader: 'css-loader',
