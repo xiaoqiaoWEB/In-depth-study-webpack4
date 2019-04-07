@@ -18,17 +18,19 @@ module.exports = {
           options: {
             name: '[name]_[hash].[ext]',
             outputPath: 'images',
-            limit: 204800
+            limit: 204800     //2KB 2048
           }
         }
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.less$/,
-        use: ['style-loader','css-loader','less-loader']
+        test: /\.(scss)$/,
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 2,
+            modules: true
+          }
+        }, 'postcss-loader', 'sass-loader']
       }
     ]
   }
