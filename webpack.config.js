@@ -4,6 +4,9 @@ const path = require('path')
 
 module.exports = {
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
+  // production
+  //devtool: 'cheap-module-source-map',
   entry: {
     main: './src/index.js',
     //sub: './src/index.js'
