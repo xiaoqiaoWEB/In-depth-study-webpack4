@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
 const path = require('path')
 
 module.exports = {
@@ -19,7 +20,9 @@ module.exports = {
   devServer: {
     contentBase:  path.join(__dirname, "dist"),
     open: true,
-    port: 3000
+    port: 3000,
+    hot: true,
+    hotOnly: true
   },
   module: {
     rules:[
@@ -54,6 +57,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    // 热更新
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
