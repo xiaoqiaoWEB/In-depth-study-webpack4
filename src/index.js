@@ -1,3 +1,5 @@
+//presets
+//import "@babel/polyfill";
 import avatar from './123.jpg'
 import index from './index.scss'
 
@@ -22,3 +24,5 @@ btn.onclick = function () {
   item.innerHTML = 'item'
   document.body.appendChild(item)
 }
+
+let parPPP = new Promise();
