@@ -1,28 +1,14 @@
-//presets
-//import "@babel/polyfill";
-import avatar from './123.jpg'
-import index from './index.scss'
+// Tree shaking 只支持 ES modules
 
-import Creavatar from './avatar'
-Creavatar()
+import '@babel/polyfill'
 
-let img = new Image()
-img.src = avatar
-img.classList.add(index.avatar)
+import React, {Component} from 'react'
+import ReactDom from 'react-dom';
 
-let root = document.getElementById('root')
-root.append(img)
-
-let btn = document.createElement('div')
-btn.innerHTML = '点击'
-
-document.body.appendChild(btn)
-
-btn.onclick = function () {
-  let item = document.createElement('p')
-  item.classList.add(index.item)
-  item.innerHTML = 'item'
-  document.body.appendChild(item)
+class App extends Component {
+  render () {
+    return <div>REACT</div>
+  }
 }
 
-let parPPP = new Promise();
+ReactDom.render(<App/>, document.getElementById('root'))

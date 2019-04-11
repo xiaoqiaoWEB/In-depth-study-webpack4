@@ -95,5 +95,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     // 热更新
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  optimization: {
+    usedExports: true
+  }
 }
