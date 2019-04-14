@@ -76,6 +76,11 @@ module.exports = {
       }
     ]
   },
+  optimization: { //类库代码分割
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html'
