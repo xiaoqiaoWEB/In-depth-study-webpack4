@@ -1,13 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const webpack = require('webpack')
 const path = require('path')
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
-  // production
-  //devtool: 'cheap-module-source-map',
   entry: {
     main: './src/index.js',
     //sub: './src/index.js'
@@ -15,14 +10,7 @@ module.exports = {
   output: {
     //publicPath: 'http//:www.cdn.cn',
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  devServer: {
-    contentBase:  path.join(__dirname, "dist"),
-    open: true,
-    port: 3000,
-    hot: true,
-    hotOnly: true
+    path: path.resolve(__dirname, '../dist')
   },
   module: {
     rules:[
@@ -93,10 +81,5 @@ module.exports = {
       template: 'src/index.html'
     }),
     new CleanWebpackPlugin(),
-    // 热更新
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  optimization: {
-    usedExports: true
-  }
+  ]
 }
