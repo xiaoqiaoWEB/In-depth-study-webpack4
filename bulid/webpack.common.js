@@ -78,26 +78,7 @@ module.exports = {
   },
   optimization: { //类库代码分割
     splitChunks: {
-      chunks: 'all',
-      minSize: 30000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '~',
-      name: true,
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          filename: 'renders.js'
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      } 
+      chunks: 'all'
     }
   },
   plugins: [
