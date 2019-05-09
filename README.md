@@ -19,6 +19,8 @@
       - filename: name
       - path: 绝对路径
 
-## loader
-  > webpack 可以使用 loader 来预处理文件。这允许你打包除 JavaScript 之外的任何静态资源。你可以使用 Node.js 来很简单地编写自己的 loader。
+## 图片文件的打包
+  - file-loader
+  - url-loader
+  > [官方文档] (https://www.webpackjs.com/loaders/url-loader/)
 
