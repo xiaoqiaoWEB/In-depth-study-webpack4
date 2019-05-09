@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-bulid": "webpack --config ./bulid/webpack.dev.js",
+    "dev-bulid": "webpack --profile --json > stats.json --config ./bulid/webpack.dev.js",
     "dev": "webpack-dev-server --config ./bulid/webpack.dev.js",
     "bulid": "webpack --config ./bulid/webpack.prod.js"
   },
