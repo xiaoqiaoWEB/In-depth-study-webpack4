@@ -62,4 +62,20 @@
 
 ## webpack-dev-server
   > 提供了一个简单的Web服务器和使用实时重新加载的能力
-  
+  - host: "0.0.0.0"
+  - hot: true 
+    > 启用 webpack 的模块热替换特性
+  - port: 8080
+    > 指定要监听请求的端口号：
+  - open: true
+    > 打开网页
+  - proxy: {}
+    > 请求代理 -- （https://www.webpackjs.com/configuration/dev-server/#devserver-proxy）
+  - hotOnly: true
+    > 在没有页面刷新的情况下启用热模块替换（请参阅devServer.hot）作为构建失败时的后备。
+
+##  模块热替换 （https://www.webpackjs.com/guides/hot-module-replacement/）
+  > 模块热替换(Hot Module Replacement 或 HMR)是 webpack 提供的最有用的功能之一。它允许在运行时更新各种模块，而无需进行完全刷新。本页面重点介绍实现，而概念页面提供了更多关于它的工作原理以及为什么它有用的细节。
+  - hot: true
+  - new webpack.HotModuleReplacementPlugin()
+    > (https://www.webpackjs.com/api/hot-module-replacement/)
