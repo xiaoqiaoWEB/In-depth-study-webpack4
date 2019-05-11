@@ -37,3 +37,29 @@
       > autoprefixer
   - file-loader
     - 字体文件的打包编译
+
+## plugins 插件
+  > webpack 有着丰富的插件接口(rich plugin interface)。webpack 自身的多数功能都使用这个插件接口。这个插件接口使 webpack 变得极其灵活。
+  - html-webpack-plugin
+    - 简化了HTML文件的创建，以便为你的webpack包提供服务。这对于在文件名中包含每次会随着编译而发生变化哈希的 webpack bundle 尤其有用。 你可以让插件为你生成一个HTML文件，使用lodash模板提供你自己的模板，或使用你自己的loader。
+  - clean-webpack-plugin 清楚文件
+
+## entry output
+  - entry 对象是用于 webpack 查找启动并构建 bundle。其上下文是入口文件所处的目录的绝对路径的字符串。
+    - 简单规则：每个 HTML 页面都有一个入口起点。单页应用(SPA)：一个入口起点，多页应用(MPA)：多个入口起点。
+    - entry: {
+      - home: "./home.js",
+      - about: "./about.js",
+      - contact: "./contact.js"
+    - }
+  - output  output 位于对象最顶级键(key)，包括了一组选项，指示 webpack 如何去输出、以及在哪里输出你的「bundle、asset 和其他你所打包或使用 webpack 载入的任何内容」。
+
+## SourceMap 
+  > 是一个映射关系 -- 知道哪一行代码出错了 
+  - devtool 配置 SourceMap
+  - dev cheap-module-eval-source-map
+  - pro cheap-module-source-map
+
+## webpack-dev-server
+  > 提供了一个简单的Web服务器和使用实时重新加载的能力
+  
