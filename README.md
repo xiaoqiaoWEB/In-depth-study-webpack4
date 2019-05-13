@@ -79,3 +79,40 @@
   - hot: true
   - new webpack.HotModuleReplacementPlugin()
     > (https://www.webpackjs.com/api/hot-module-replacement/)
+
+## babel 处理Es6
+  - babel-loader
+  - @babel/runtime-corejs2
+  - 配置babel
+    - 业务组件
+      - @babel/preset-env
+      - core-js
+      - @babel/polyfill
+      - presets: [
+             [
+               "@babel/preset-env",
+              {
+                targets: {
+                   edge: "17",
+                  firefox: "60",
+                  chrome: "67",
+                  safari: "11.1"
+                },
+                useBuiltIns: "usage"
+               }
+             ]
+         ]
+    - 库代码
+        "plugins": [
+          [
+            "@babel/plugin-transform-runtime",
+            {
+              "absoluteRuntime": false,
+              "corejs": 2,
+              "helpers": true,
+              "regenerator": true,
+              "useESModules": false
+            }
+          ]
+        ]
+  - .babelrc
