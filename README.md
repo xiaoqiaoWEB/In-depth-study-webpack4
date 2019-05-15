@@ -116,3 +116,18 @@
           ]
         ]
   - .babelrc
+
+## react 配置
+  > (https://www.babeljs.cn/docs/babel-preset-react)
+
+## Tree Shaking
+  - 只支持 ES Module 语法的 引入
+  - Dev --> optimization: {
+      usedExports: true
+    } 
+  - package.json --> sideEffects: ['@babel/polyfill', 'css']
+
+## Development Production 区分打包
+  - webpack-merge 合并 webpack.config.js
+
+

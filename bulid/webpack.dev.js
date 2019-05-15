@@ -6,8 +6,6 @@ const webpackCommon = require('./webpack.common.js')
 const devConfig = {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
-  // production
-  //devtool: 'cheap-module-source-map',
   devServer: {
     contentBase:  path.join(__dirname, "dist"),
     open: true,
