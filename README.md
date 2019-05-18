@@ -130,4 +130,13 @@
 ## Development Production 区分打包
   - webpack-merge 合并 webpack.config.js
 
+## code Splitting 代码分割 
+  > (https://webpack.js.org/guides/code-splitting/#root)
+
+  - 动态 @babel/plugin-syntax-dynamic-import
+  
+  - splittingchunksplugin 配置参数 (https://webpack.js.org/plugins/split-chunks-plugin/)
+
+
+
 
