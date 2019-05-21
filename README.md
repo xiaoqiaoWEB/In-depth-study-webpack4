@@ -53,6 +53,7 @@
       - contact: "./contact.js"
     - }
   - output  output 位于对象最顶级键(key)，包括了一组选项，指示 webpack 如何去输出、以及在哪里输出你的「bundle、asset 和其他你所打包或使用 webpack 载入的任何内容」。
+    - chunkFilname: '[name].chunk.js'
 
 ## SourceMap 
   > 是一个映射关系 -- 知道哪一行代码出错了 
@@ -136,6 +137,44 @@
   - 动态 @babel/plugin-syntax-dynamic-import
   
   - splittingchunksplugin 配置参数 (https://webpack.js.org/plugins/split-chunks-plugin/)
+
+  - lazy loading 懒加载 (https://webpack.js.org/guides/lazy-loading/#root)
+  
+  - 代码分割 和 webpack 无关
+    - wenpack 上实现代码分割 两种方式
+    - 01 同步
+      - 只需设置 optimization 配置 splitChunks  --》 chunks: 'all' -- 默认是 a
+    - 02 异步
+      - import: => 无需做配置 会自动进行代码分割 利用  -----》 dynamic-import-webpack
+
+## chunk 是什么 
+  - 每一个文件 就是 chunk
+
+## 打包分析
+  > (http://webpack.github.com/analyse)
+    (https://chrisbateman.github.io/webpack-visualizer/)
+  - webpack --profile --json > stats.json   
+  - coverage 检测代码覆盖率 --- 前端代码性能 并不体现在缓存而是体现在 coverage 
+
+  - (https://webpack.js.org/guides/code-splitting#prefetchingpreloading-modules)
+    - Preloading 
+      - import(/* webpackPreload: true */ 'ChartingLibrary');
+    - Prefetching  在空闲期  加载 
+      - import(/* webpackPrefetch: true */ 'LoginModal');
+
+    - 与prefetch相比，Preload指令有很多不同之处：
+      - 预加载的块开始与父块并行加载。父块完成加载后，将启动预取的块。
+      - 预加载的块具有中等优先级并立即下载。浏览器空闲时下载预取的块。
+      - 父组块应立即请求预加载的块。未来的任何时候都可以使用预取的块。
+      - 浏览器支持是不同的。
+
+## CSS 代码分割
+
+
+
+
+
+
 
 
 

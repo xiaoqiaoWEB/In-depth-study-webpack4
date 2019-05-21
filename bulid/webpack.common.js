@@ -10,6 +10,7 @@ module.exports = {
   output: {
     //publicPath: 'http//:www.cdn.cn',
     filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, '../dist')
   },
   module: {
@@ -72,7 +73,15 @@ module.exports = {
             importLoaders: 2,
             modules: true
           }
-        }, 'postcss-loader', 'sass-loader']
+        }, 'sass-loader', 'postcss-loader']
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
       }
     ]
   },

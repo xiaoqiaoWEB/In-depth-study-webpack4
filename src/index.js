@@ -11,18 +11,18 @@
 //   });
 // };
 
-async function getComponent() {
-  const { default: _ } = await import(/* webpackChunkName: "lodash" */'lodash');
-  const element = document.createElement('div');
-  element.innerHTML = _join(['Dell', 'lee'], '-');
-  return element;
-}
+// async function getComponent() {
+//   const { default: _ } = await import(/* webpackChunkName: "lodash" */'lodash');
+//   const element = document.createElement('div');
+//   element.innerHTML = _join(['Dell', 'lee'], '-');
+//   return element;
+// }
 
-document.addEventListener('click', () => {
-  getComponent().then((element) => {
-    document.body.appendChild(element);
-  })
-})
+// document.addEventListener('click', () => {
+//   getComponent().then((element) => {
+//     document.body.appendChild(element);
+//   })
+// })
 
 // getComponent().then((el) => {
 //   document.body.appendChild(el);
@@ -34,3 +34,9 @@ document.addEventListener('click', () => {
   //只需设置 optimization 配置 splitChunks  --》 chunks: 'all'
 // 02 异步
   // import: => 无需做配置 会自动进行代码分割 利用  -----》 dynamic-import-webpack
+
+
+// css 代码分割
+
+import './rest.css';
+console.log('hhh');
