@@ -63,29 +63,14 @@ module.exports = {
       },
       {
         test: /\.(eot|ttf|svg)$/,
-        loader: 'file-loader'
-      },
-      {
-        test: /\.(scss)$/,
-        use: ['style-loader', {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 2,
-            modules: true
-          }
-        }, 'sass-loader', 'postcss-loader']
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader'
-        ]
+        use: {
+          loader: 'file-loader'
+        } 
       }
     ]
   },
   optimization: { //类库代码分割
+    usedExports: true,
     splitChunks: {
       chunks: 'all'
     }

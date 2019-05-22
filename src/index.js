@@ -39,4 +39,5 @@
 // css 代码分割
 
 import './rest.css';
+import './index.css';
 console.log('hhh');

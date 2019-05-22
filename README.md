@@ -143,7 +143,7 @@
   - 代码分割 和 webpack 无关
     - wenpack 上实现代码分割 两种方式
     - 01 同步
-      - 只需设置 optimization 配置 splitChunks  --》 chunks: 'all' -- 默认是 a
+      - 只需设置 optimization 配置 splitChunks  --》 chunks: 'all' -- 默认是 异步
     - 02 异步
       - import: => 无需做配置 会自动进行代码分割 利用  -----》 dynamic-import-webpack
 
@@ -168,7 +168,16 @@
       - 父组块应立即请求预加载的块。未来的任何时候都可以使用预取的块。
       - 浏览器支持是不同的。
 
-## CSS 代码分割
+## CSS 代码分割 
+  > (https://webpack.js.org/plugins/mini-css-extract-plugin/#root)
+  - mini-css-extract-plugin
+    > 此插件将CSS提取到单独的文件中。它为每个包含CSS的JS文件创建一个CSS文件。它支持CSS和SourceMaps的按需加载。
+    - pro 将style-loader 换成  	MiniCssExtractPlugin.loader
+    - pro optimization -> minimizer: [new OptimizeCSSAssetsPlugin({})]
+    - pro plugins -> new MiniCssExtractPlugin({filename: '[name].css'})
+    - base optimization -> 	usedExports: true
+    - package.json -> sideEffects: *.css"
+
 
 
 
