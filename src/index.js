@@ -38,6 +38,15 @@
 
 // css 代码分割
 
-import './rest.css';
-import './index.css';
-console.log('hhh');
+// import './rest.css';
+// import './index.css';
+// console.log('hhh');
+
+import $ from 'jquery';
+import _ from 'lodash';
+
+const dom = $('<div>');
+dom.html(_.join(['dell', 'lee', 'xiaoqiao', '号奥还需'], '---'));
+$('body').append(dom);
+
+

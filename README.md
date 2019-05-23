@@ -178,6 +178,19 @@
     - base optimization -> 	usedExports: true
     - package.json -> sideEffects: *.css"
 
+##Caching (缓存) 与 webpack
+  > (https://webpack.js.org/guides/caching/#root)
+  - 类库代码 打包的时候 区分打包
+  - output --> prod
+    - filename: '[name].[contenthash].js',
+	  - chunkFilename: '[name].[contenthash].js'  
+  
+  - optimization
+    - splitChunks
+      - cacheGroups
+        - vendors - >{test: /[\\/]node_modules[\\/]/,priority: -10,name: 'vendors',}
+
+
 
 
 

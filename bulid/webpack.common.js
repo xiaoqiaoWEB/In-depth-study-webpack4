@@ -9,8 +9,8 @@ module.exports = {
   },
   output: {
     //publicPath: 'http//:www.cdn.cn',
-    filename: '[name].js',
-    chunkFilename: '[name].chunk.js',
+    // filename: '[name].js',
+    // chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, '../dist')
   },
   module: {
@@ -72,7 +72,14 @@ module.exports = {
   optimization: { //类库代码分割
     usedExports: true,
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
+      cacheGroups: {
+      	vendors: {
+      		test: /[\\/]node_modules[\\/]/,
+      		priority: -10,
+      		name: 'vendors',
+      	}
+      }
     }
   },
   plugins: [
@@ -80,5 +87,9 @@ module.exports = {
       template: 'src/index.html'
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
+  performance: false,
+  output: {
+		path: path.resolve(__dirname, '../dist')
+	}
 }
