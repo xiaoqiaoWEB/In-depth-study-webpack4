@@ -184,12 +184,16 @@
   - output --> prod
     - filename: '[name].[contenthash].js',
 	  - chunkFilename: '[name].[contenthash].js'  
-  
   - optimization
     - splitChunks
       - cacheGroups
         - vendors - >{test: /[\\/]node_modules[\\/]/,priority: -10,name: 'vendors',}
 
+## shimming 
+  > (https://webpack.js.org/guides/shimming/#root)
+  - case --> jquery
+  - plugins 
+    - new webpack.ProvidePlugin({ $: 'jquery'}) //类似全局引入
 
 
 

@@ -44,9 +44,11 @@
 
 import $ from 'jquery';
 import _ from 'lodash';
+import color from './ui'
 
 const dom = $('<div>');
 dom.html(_.join(['dell', 'lee', 'xiaoqiao', '号奥还需'], '---'));
 $('body').append(dom);
 
+color();
 
