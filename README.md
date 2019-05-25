@@ -195,8 +195,27 @@
   - plugins 
     - new webpack.ProvidePlugin({ $: 'jquery'}) //类似全局引入
 
+## 环境 env
+  - common.js
+  - package.json  设置全局变量
 
 
+
+## library 打包 - 库
+  npm 打包 发布
+
+## pwa
+  > 渐进式Web应用程序（或PWA）是提供类似于本机应用程序的Web应用程序。有很多事情可以促成这一点。其中，最重要的是应用程序在离线时能够运行的能力。这是通过使用名为Service Workers的Web技术实现的。(https://webpack.js.org/guides/progressive-web-application/#root)
+
+  - workbox-webpack-plugin
+    - clientsClaim: true,
+    - skipWaiting: true
+    
+## typeSCript 打包配置
+  - tsconfig.json
+  > (https://webpack.js.org/guides/typescript)
+
+## 
 
 
 

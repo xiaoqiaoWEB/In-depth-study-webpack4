@@ -42,13 +42,28 @@
 // import './index.css';
 // console.log('hhh');
 
-import $ from 'jquery';
-import _ from 'lodash';
-import color from './ui'
+// import $ from 'jquery';
+// import _ from 'lodash';
+// import color from './ui'
 
-const dom = $('<div>');
-dom.html(_.join(['dell', 'lee', 'xiaoqiao', '号奥还需'], '---'));
-$('body').append(dom);
+// const dom = $('<div>');
+// dom.html(_.join(['dell', 'lee', 'xiaoqiao', '号奥还需'], '---'));
+// $('body').append(dom);
 
-color();
+// color();
+
+//pwa
+if('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').then(registration  => {
+      console.log('SW registered: ', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed: ', registrationError);
+    })
+  })
+}
+
+console.log('xiaoqiao')
+
+
 
