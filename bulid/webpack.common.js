@@ -5,34 +5,44 @@ const path = require('path')
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 const fs = require('fs')
 
-const plugins = [
-  new HtmlWebpackPlugin({
-    template: 'src/index.html'
-  }),
-  new CleanWebpackPlugin(),
-  new webpack.ProvidePlugin({
-    $: 'jquery'
+const makeConfig = (configs) => {
+  const plugins = [
+    new CleanWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery'
+    })
+  ]
+  Object.keys(configs.entry).forEach((item) => {
+    plugins.push(
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        filename: `${item}.html`,
+        chunks: [item]
+      })
+    )
   })
-]
+  const files = fs.readdirSync(path.resolve(__dirname, '../dll'))
+  files.forEach((item) => {
+    if(/.*\.dll.js/.test(item)) {
+      plugins.push(new AddAssetHtmlWebpackPlugin({
+        filepath: path.resolve(__dirname, '../dll', item)
+      }))
+    }
+    if(/.*\.manifest.json/.test(item)) {
+      plugins.push(new webpack.DllReferencePlugin({
+        manifest: path.resolve(__dirname, '../dll', item)
+      }))
+    }
+  })
+  return plugins;
+}
 
-const files = fs.readdirSync(path.resolve(__dirname, '../dll'))
-files.forEach((item) => {
-  if(/.*\.dll.js/.test(item)) {
-    plugins.push(new AddAssetHtmlWebpackPlugin({
-      filepath: path.resolve(__dirname, '../dll', item)
-    }))
-  }
-  if(/.*\.manifest.json/.test(item)) {
-		plugins.push(new webpack.DllReferencePlugin({
-			manifest: path.resolve(__dirname, '../dll', item)
-		}))
-	}
-})
 
-module.exports = {
+
+const configs = {
   entry: {
-    main: './src/index.js',
-    //sub: './src/index.js'
+    index: './src/index.js',
+    list: './src/list.js'
   },
   output: {
     //publicPath: 'http//:www.cdn.cn',
@@ -112,9 +122,12 @@ module.exports = {
       }
     }
   },
-  plugins,
   performance: false,
   output: {
 		path: path.resolve(__dirname, '../dist')
 	}
 }
+
+configs.plugins = makeConfig(configs);
+
+module.exports = configs;
