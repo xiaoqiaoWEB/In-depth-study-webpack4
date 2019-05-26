@@ -74,6 +74,10 @@
     > 请求代理 -- （https://www.webpackjs.com/configuration/dev-server/#devserver-proxy）
   - hotOnly: true
     > 在没有页面刷新的情况下启用热模块替换（请参阅devServer.hot）作为构建失败时的后备。
+  - historyApiFallback 
+    > 使用HTML5历史记录API时，index.html可能必须提供该页面以代替任何404回复。
+  - overlay 
+    > 当存在编译器错误或警告时，在浏览器中显示全屏覆盖。默认情况下禁用。
 
 ##  模块热替换 （https://www.webpackjs.com/guides/hot-module-replacement/）
   > 模块热替换(Hot Module Replacement 或 HMR)是 webpack 提供的最有用的功能之一。它允许在运行时更新各种模块，而无需进行完全刷新。本页面重点介绍实现，而概念页面提供了更多关于它的工作原理以及为什么它有用的细节。
@@ -199,8 +203,6 @@
   - common.js
   - package.json  设置全局变量
 
-
-
 ## library 打包 - 库
   npm 打包 发布
 
@@ -215,7 +217,32 @@
   - tsconfig.json
   > (https://webpack.js.org/guides/typescript)
 
-## 
+## 使用 eslint
+  > (https://webpack.js.org/loaders/eslint-loader/#root)
+  - eslint-loader eslint
+    - options 
+      - fix 是否自动修复
+
+## webpack 性能优化
+  - node npm webpack 版本更新
+  - loader 在尽可能少的模块上 使用 loader
+  - plugins 尽量减少 插件 和插件的可靠性
+  - resolve 参数合理配置
+    > (https://webpack.js.org/configuration/resolve/#root)
+    - mainFiles
+    - alias
+  - Dllplugin 
+    > (https://webpack.js.org/plugins/dll-plugin/#root)
+    - DllPlugin
+      - webpack.dll.js
+    - DllReferencePlugin
+      - webpack.common.js
+    
+
+
+## webpack 多页面的配置
+  
+
 
 
 

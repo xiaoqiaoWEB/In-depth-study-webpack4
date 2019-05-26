@@ -2,6 +2,32 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
+const fs = require('fs')
+
+const plugins = [
+  new HtmlWebpackPlugin({
+    template: 'src/index.html'
+  }),
+  new CleanWebpackPlugin(),
+  new webpack.ProvidePlugin({
+    $: 'jquery'
+  })
+]
+
+const files = fs.readdirSync(path.resolve(__dirname, '../dll'))
+files.forEach((item) => {
+  if(/.*\.dll.js/.test(item)) {
+    plugins.push(new AddAssetHtmlWebpackPlugin({
+      filepath: path.resolve(__dirname, '../dll', item)
+    }))
+  }
+  if(/.*\.manifest.json/.test(item)) {
+		plugins.push(new webpack.DllReferencePlugin({
+			manifest: path.resolve(__dirname, '../dll', item)
+		}))
+	}
+})
 
 module.exports = {
   entry: {
@@ -14,11 +40,14 @@ module.exports = {
     // chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, '../dist')
   },
+  resolve: {
+		extensions: ['.js', '.jsx'],
+	},
   module: {
     rules:[
       { 
         test: /\.js$/, 
-        exclude: /node_modules/, 
+        include: path.resolve(__dirname, '../src'),
         loader: "babel-loader",
         //options: {
           // 业务组件
@@ -83,15 +112,7 @@ module.exports = {
       }
     }
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
-    new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
-      $: 'jquery'
-    })
-  ],
+  plugins,
   performance: false,
   output: {
 		path: path.resolve(__dirname, '../dist')
