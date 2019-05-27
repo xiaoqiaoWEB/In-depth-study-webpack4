@@ -238,10 +238,12 @@
     - DllReferencePlugin
       - webpack.common.js
     
-
-
 ## webpack 多页面的配置
+  - 配置 entry
+  - 每个页面 分别配置 html-webpack-plugin
   
+## webpack @vue/cli 配置
+  - vue.config.js
 
 
 
